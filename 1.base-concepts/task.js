@@ -1,35 +1,22 @@
 function solveEquation(a, b, c) {
-  let arr;
-  // код для задачи №1 писать здесь
-  return arr; // array
-}
-"use strict";
-let a = -110,
-  b = 10,
-  c = 10,
-  arr = solveEquation(a, b, c),
-  d = arr[0];
-console.log("Дискриминант: " + d);
-console.log(
-  d < 0
-    ? "Корней нет"
-    : d === 0
-      ? "Один корень: " + arr[1]
-      : `Два корня: ${arr[1]} и ${arr[2]}`
-);
-function solveEquation(a, b, c) {
-  let discr = (a, b, c) => b * b - 4 * a * c;
-  let d = discr(a, b, c);
-  if (d < 0) return [d];
-
-  let x1 = (-b + Math.sqrt(d)) / (2 * a),
-    x2 = (-b - Math.sqrt(d)) / (2 * a);
-
-  return [d, x1, x2];
-};
-function calculateTotalMortgage(percent, contribution, amount, date) {
-  let totalAmount;
-
+  if (a==0) return ["a= 0, это недопустимое значение", "нет значения", "нет значения"];
+   const discriminant = b ** 2 - 4 * a * c;
+   if (discriminant > 0) {
+     let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+     let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+     return [discriminant,x1, x2];
+   } else if
+     (discriminant === 0) {
+     let x1 = (-b/(2*a));
+    
+     return [discriminant,x1];
+   } else if
+     (discriminant < 0) {
+      
+     return  [];
+   }
+ 
+ };
   // код для задачи №2 писать здесь
 
   return totalAmount;
