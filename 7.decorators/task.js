@@ -1,25 +1,24 @@
 function cachingDecoratorNew(func) {
   // Ваш код
   let cache = [];
-  function wrapper(...rest) {
-    const hash = rest.join(",");
+  function wrapper(...args) {
+    const hash = args.join(",");
     let idx = cache.findIndex((item) => hash === item.hash);
     if (idx !== -1) {
       console.log("Из кэша: " + cache[idx].value);
       return "Из кэша: " + cache[idx].value;
-    } else {
-      let result = func(...rest);
+    }
+      let result = func(...args);
       cache.push({hash: hash, value: result});
       if (cache.length > 5) {
         cache.shift();
       }
       console.log("Вычисляем: " + result);
       return "Вычисляем: " + result;
-    }
+    
   }
   return wrapper;
 }
-
 
 function debounceDecoratorNew(func) {
   // Ваш код
