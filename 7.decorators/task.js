@@ -23,40 +23,34 @@ function cachingDecoratorNew(func) {
 function debounceDecoratorNew(func) {
   // Ваш код
   let flag = false;
-
-
-  return function(...rest) {
+return function(...args){
+ let ms = func.apply(this,arguments);
       if (!flag) return;
 
       func.apply(this, rst);
 
       flag = true;
 
-     setTimeout(() => {flag = false;}, ms);
+     setTimeout(() => {flag = false;},func);
   };
 
 }
-
-
-
-
-
-
 function debounceDecorator2(func) {
   // Ваш код
   let timeout;
     let flag = false;
     let count = 0;
-    return function (...rest) {
-      if (!flag) {
-      
+    return function (...args) {
+      if (!flag) return;
+      {
+      let ms = func.apply(this, arguments);
        count++;
        console.log (count);
        flag = true;
-       timeout = setTimeout(() => {flag = false;}, ms);
-      }
-      else {
-       return;
+       timeout = setTimeout(() => {flag = false;}, func);
+      
+      
+      
       }  
     };
 }
